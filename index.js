@@ -12,15 +12,16 @@ dotenv.config();
 const port = process.env.PORT 
 const app = express();
 
-app.use(cookieParser())
 
 app.use(express.json());
-
+app.use(cookieParser())
 app.use("/api/auth",AuthRoutes)
 app.use("/api/profile", ProfileRoutes)
 // connecting to database
 
-
+app.get("/" , (req,res)=>{
+    res.json({message:"welcome to backend"})
+})
 
 
 connectDb();

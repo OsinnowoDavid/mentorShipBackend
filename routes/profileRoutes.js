@@ -1,6 +1,6 @@
 import express from "express";
 import {getUserData, EditProfile} from "../controller/profile.js"
-import { authMiddleware } from "../middleware/authMiddle.js";
+import { authMiddleware } from "../middleware/authMiddleware.js";
 const ProfileRoutes = express.Router()
 
 ProfileRoutes.get("/getUserData/:id",authMiddleware, getUserData);
