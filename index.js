@@ -8,6 +8,8 @@ import ProfileRoutes from "./routes/ProfileRoutes.js";
 import cookieParser from "cookie-parser";
 dotenv.config();
 
+
+const port = process.env.PORT 
 const app = express();
 app.use(cookieParser());
 
@@ -16,9 +18,16 @@ app.use(express.json());
 app.use("/api/auth",AuthRoutes)
 app.use("/api/profile", ProfileRoutes)
 // connecting to database
+
+app.get("/", (req, res) => {
+    res.send("Welcome to the Mentorship Backend");
+})
+
+
+
 connectDb();
 
-app.listen(8000, ()=>{
+app.listen(port, ()=>{
     console.log(" server is running")
 
 })
