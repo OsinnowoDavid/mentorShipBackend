@@ -6,6 +6,7 @@ import connectDb from "./config/Mongodb.js";
 import AuthRoutes from "./routes/AuthRoutes.js";
 import ProfileRoutes from "./routes/profileRoutes.js"
 import cookieParser from "cookie-parser";
+import mentorRoutes from "./routes/mentorRoutes.js";
 dotenv.config();
 
 
@@ -26,6 +27,7 @@ app.use(cors({
 }))
 app.use("/api/auth",AuthRoutes)
 app.use("/api/profile", ProfileRoutes)
+app.use("/api/", mentorRoutes)
 // connecting to database
 
 app.get("/" , (req,res)=>{
