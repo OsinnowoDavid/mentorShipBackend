@@ -11,7 +11,8 @@ const authSchema = new mongoose.Schema({
         default: "AVAILABLE"
     },
     bio: {type: String, default: ""},
-    topic: {type: String}
+    topic: {type: String},
+    profileImage: {type: String, default: ""}
 }, {timestamps: true})
 
 const MentorModel = mongoose.model.mentor || mongoose.model("Mentor", authSchema);
