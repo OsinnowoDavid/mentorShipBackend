@@ -11,7 +11,7 @@ const addMentor = async(req,res) =>{
     const salt = 10
 
     try {
-        const {name, email, availability, bio, topic, password} = req.body
+        const {name, email, availability, bio, topic, password, experience} = req.body
 
         const hashPassword = await bcrypt.hash(password, salt)
         
@@ -21,7 +21,8 @@ const addMentor = async(req,res) =>{
             password: hashPassword,
             availability, 
             bio, 
-            topic
+                topic,
+            experience
         })
 
         await mentor.save()
@@ -112,5 +113,22 @@ const getMentor = async(req,res) =>{
         return res.status(500).json({message: "Server error"});
     }
 }
-
-export {addMentor, BookSession, getMentor, uploadMentorImage, deleteMentorImage}
+const getMentorById = async(req,res) =>{
+    try {
+        const {id} = req.params;
+        const mentor = await MentorModel.findById(id);
+        res.status(200).json({mentor})
+    } catch (error) {
+        console.log(error)
+    }
+}
+const deleteMentor = async(req,res) =>{
+    try {
+        const {id} = req.params;
+        await MentorModel.findByIdAndDelete(id);
+        res.status(200).json({message: "Mentor deleted successfully"})
+    } catch (error) {
+        console.log(error)
+    }
+}
+export {addMentor, BookSession, getMentor, uploadMentorImage, deleteMentorImage , getMentorById , deleteMentor}
