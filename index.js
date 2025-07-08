@@ -24,7 +24,7 @@ app.use(cookieParser())
 // Serve static files from uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-const allowOrigin =["https://mentorship-frontend-beige.vercel.app","http://localhost:5173"]
+const allowOrigin =["https://mentorship-frontend-beige.vercel.app","http://localhost:5173","http://localhost:5174"]
 app.use(cors({
     origin:allowOrigin,
     credentials:true,
